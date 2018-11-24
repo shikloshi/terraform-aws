@@ -1,13 +1,3 @@
-terraform {
-  backend "s3" {
-    bucket = ""
-    key    = ""
-    region = ""
-  }
-}
-
-provider "aws" {}
-
 module "consul_security_group" {}
 
 module "consul_vpc" {}
