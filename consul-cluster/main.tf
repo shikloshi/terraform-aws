@@ -1,20 +1,22 @@
 terraform {
   backend "s3" {
-    bucket = "shikloshi-terraform"
-    key    = "hashistack/terraform.tfstate"
-    region = "us-west-2"
+    bucket = ""
+    key    = ""
+    region = ""
   }
 }
 
-module "aws_vpc_module" {
-  source                   = "./modules/vpc"
-  public_subnet_cidr_block = "${var.public_subnet_cidr_block}"
-  vpc_cidr_block           = "${var.vpc_cidr_block}"
-  internet_gateway_name    = "${var.internet_gateway_name}"
-  route_table_name         = "${var.route_table_name}"
-}
+provider "aws" {}
 
-module "aws_instance_module" {
+module "consul_security_group" {}
+
+module "consul_vpc" {}
+
+module "consul_subnet" {}
+
+module "consul_security_group" {}
+
+module "consul_master_1" {
   source = "./modules/instance"
 
   instance_type            = "t2.micro"
